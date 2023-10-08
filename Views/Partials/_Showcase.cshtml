@@ -1,0 +1,38 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+
+<!-- SHOWCASE -->
+    <section class="bg-secondary relative">
+      <div class="absolute bottom-0 left-0 w-1/2 z-0">
+        <img src="../src/images/background-lines.svg" alt="" />
+      </div>
+      <div class="container flex items-center">
+        <div class="w-1/2 z-10">
+          <h1 class="text-4xl font-semibold mb-3 lg:text-7xl">
+            @Model.Value("showcaseHeading")
+          </h1>
+          <h2 class="hidden text-lg mb-10 md:block">
+            @Model.Value("showcaseDescription")
+          </h2>
+          <div>
+            <a class="text-center bg-primary rounded-full py-2 px-6 mr-3 hover:bg-primary-light transition block md:inline" href="@Model.Value("showcaseButtonUrl")">@Model.Value("showcaseButtonText")
+              <i class="ml-2 fa-light fa-arrow-up-right"></i>
+            </a>
+            <a class="text-center rounded-full py-2 px-6 mt-3 border border-black hover:bg-white hover:border-gray-400 transition block md:inline" href="">Learn More
+              <i class="ml-2 fa-light fa-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="w-1/2">
+
+            
+            @{
+                var showcaseImage = Model.Value<MediaWithCrops>("ShowcaseImage");
+                if (showcaseImage != null)
+                {
+                    <img src="@showcaseImage.MediaUrl()" alt="@showcaseImage.Value("alt")" />
+                }
+            }
+        </div>
+      </div>
+    </section>
