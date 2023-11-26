@@ -1,0 +1,71 @@
+﻿@using Crito.Models
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "_Layout.cshtml";
+    var contactForm = new ContactForm();
+}
+
+    <section class="bg-secondary py-10">
+        <ul class="space-x-2 text-center mb-3">
+            <li class="inline"><a href="#">Home</a></li>
+            <li class="inline">/</li>
+            <li class="inline"><a href="#">Contact</a></li>
+        </ul>
+        <h1 class="text-5xl font-bold text-center">Let's Connect</h1>
+    </section>
+    <!-- contact cards -->
+    <section class="mt-10 mb-8">
+        <div class="container grid grid-cols-3 gap-5">
+            <div class="border flex items-start p-10">
+                <div class="mr-5 text-lg bg-black text-white h-10 w-10 text-center rounded-full">
+                    <i class="pt-3 fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold">Visit Us</h3>
+                    <div>Sveavägen 31<br>111 34 STOCKHOLM</div>
+                </div>
+            </div>
+            <div class="border flex items-start p-10">
+                <div class="mr-5 text-lg bg-black text-white h-10 w-10 text-center rounded-full">
+                    <i class="pt-3 font-normal fa-sharp fa-light fa-phone"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold">Call Us</h3>
+                    <div>+46 (8) 121 470 50<br>+46 (8) 121 470 51</div>
+                </div>
+            </div>
+            <div class="border flex items-start p-10">
+                <div class="mr-5 text-lg bg-black text-white h-10 w-10 text-center rounded-full">
+                    <i class="pt-3 font-normal fa-light fa-envelope"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold">Email Us</h3>
+                    <div>info@crito.com<br>support@crito.com</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact form -->
+    <section class="py-10">
+        <div class="container bg-secondary pt-20 pb-10">
+            <div class="flex justify-center mb-10">
+                <h2 class="text-4xl font-bold w-1/3">Leave us a message for any information</h2>
+            </div>
+            @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post)) 
+            {
+                <div asp-validation-summary="All"></div>
+                <input asp-for="@contactForm.Name" type="text" class="w-full rounded-full px-6 py-2 mb-5" placeholder="Name*">
+                <input asp-for="@contactForm.Email" type="email" class="w-full rounded-full px-6 py-2 mb-5" placeholder="Email*">
+                <textarea asp-for="@contactForm.Message" id="" class="h-40 w-full rounded-3xl px-6 py-2 mb-5" placeholder="Your Message*"></textarea>
+                <div>
+                    <button type="submit" class="w-full bg-primary rounded-full py-2 px-6 hover:bg-primary-light transition">Send Message<i class="ml-2 fa-light fa-arrow-up-right"></i></button>
+                </div>
+            }
+        </div>
+    </section>
+    <!-- MAP -->
+    <section>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.7792237185986!2d18.059435577297588!3d59.336639710435364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d6799554e87%3A0x6562d2c842903003!2sSveav%C3%A4gen%2031%2C%20111%2034%20Stockholm!5e0!3m2!1ssv!2sse!4v1694584018403!5m2!1ssv!2sse" width="2000" height="450" style="width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
